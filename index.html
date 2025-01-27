@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>SpacefriendsJS</title>
+  <meta name="viewport" content="width=device-width">
+        <!-- Load external CSS styles -->
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+<h1>SpacefriendsJS</h1>
+  <p id="a">Version: V</p>
+  <p>This is how you fetch:</p>
+  <textarea>
+    let spf = new Spacefriends();
+
+    // Example with GET request
+    spf.fetchData('https://jsonplaceholder.typicode.com/posts/1', 'GET')
+      .then(data => {
+        console.log('Fetched data with GET:', data);
+      })
+      .catch(error => {
+        console.error('Error with Fetch API:', error);
+      });
+
+    // Example with POST request
+    const postData = {
+      title: 'foo',
+      body: 'bar',
+      userId: 1
+    };
+    spf.fetchData('https://jsonplaceholder.typicode.com/posts', 'POST', postData)
+      .then(data => {
+        console.log('Fetched data with POST:', data);
+      })
+      .catch(error => {
+        console.error('Error with Fetch API:', error);
+      });
+
+  </textarea>
+  <p>This is how you use XHR (XMLHttpRequest):</p>
+  <textarea>
+    let spf = new Spacefriends();
+
+    // Example with GET request
+    spf.fetchDataXHR('https://jsonplaceholder.typicode.com/posts/1', 'GET', null, function(error, data) {
+      if (error) {
+        console.error('Error with XMLHttpRequest:', error);
+      } else {
+        console.log('Fetched data with GET:', data);
+      }
+    });
+
+    // Example with POST request
+    const postData = {
+      title: 'foo',
+      body: 'bar',
+      userId: 1
+    };
+    spf.fetchDataXHR('https://jsonplaceholder.typicode.com/posts', 'POST', postData, function(error, data) {
+      if (error) {
+        console.error('Error with XMLHttpRequest:', error);
+      } else {
+        console.log('Fetched data with POST:', data);
+      }
+    });
+
+  </textarea>
+  <script src="/script.js"></script>
+  <script>
+    // So you can use the library's good stuff
+    const spf = new Spacefriends();
+
+    // Display version
+    document.getElementById("a").innerHTML = "Version: " + spf.version; 
+  </script>
+    </body>
+</html>
