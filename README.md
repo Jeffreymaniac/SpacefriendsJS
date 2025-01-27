@@ -1,0 +1,2 @@
+# SpacefriendsJS
+A javascript library
